@@ -7,32 +7,32 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent{
-  username:string = "";
-  correo:string = "";
+export class RegisterComponent {
+  username: string = "";
+  correo: string = "";
   pass: string = "";
   repPass: string = "";
-  respuesta:string="";
-  constructor(private authService: AuthService){}
+  respuesta: string = "";
+  constructor(private authService: AuthService) { }
 
-  register(){
-    if(this.pass!=this.repPass){
-      this.respuesta="Passwords don't match";
+  register() {
+    if (this.pass != this.repPass) {
+      this.respuesta = "Passwords don't match";
       return;
     }
-    this.authService.register( this.username,this.correo,this.pass).subscribe((response:any)=>{
-  
-        window.alert("registered successful");
-        this.respuesta="";
-        this.authService.toggleForm();
-      
-    },(error)=>{
-      this.respuesta = `${error.error.message} `;
-      console.log(error);
-    });
-    
+    this.authService.register(this.username, this.correo, this.pass).subscribe((res) => console.log(res)
+      , (error) => {
+        if (error.error.text === "user created") {
+          window.alert("registered successful");
+          this.respuesta = "";
+          this.authService.toggleForm();
+          return;
+        }
+        this.respuesta = `${error.error.text} `;
+      });
+
   }
-  toggleForm(){
+  toggleForm() {
     this.authService.toggleForm();
   }
 }

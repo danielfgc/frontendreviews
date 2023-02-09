@@ -25,6 +25,9 @@ export class LoginComponent {
         sessionStorage.setItem("user", JSON.stringify(response.data.user));
         sessionStorage.setItem("token", response.data.token);
       }
-    },()=>{this.respuesta='Email or password are incorrect'});
+    },(error)=>{
+      this.respuesta='Email or password are incorrect';
+      console.log(error);
+  });
   }
 }

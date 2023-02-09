@@ -1,10 +1,10 @@
 <form>
     <h2>Create an account</h2>
-    <input type="text" name="username" id="username" ngModel placeholder="Username" required />
-    <input type="email" name="correo" id="correo" ngModel placeholder="Email Address" required />
-    <input type="password" name="pass" id="pass" ngModel placeholder="Create Password" minlength="6"
+    <input type="text" name="username" id="username" [(ngModel)]="username" placeholder="Username" required />
+    <input type="email" name="correo" id="correo" [(ngModel)]="correo" placeholder="Email Address" required />
+    <input type="password" name="pass" id="pass" [(ngModel)]="pass" placeholder="Create Password" minlength="6"
         required />
-    <input type="password" name="repPass" id="repPass" ngModel placeholder="Confirm Password"
+    <input type="password" name="repPass" id="repPass" [(ngModel)]="repPass" placeholder="Confirm Password"
         minlength="6" required />
     <p class="fail">{{respuesta}}</p>
     <button (click)="register()">Sign Up</button>
