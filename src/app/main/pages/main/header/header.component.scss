@@ -1,0 +1,61 @@
+nav{
+    background-color: rgb(251, 229, 85);
+    box-shadow: 5px 5px 5px rgba(99, 103, 0, 0.209);
+}
+#signInBtn{
+    padding: 0.8rem;
+    max-width: 100px;
+    background-color: rgba(255, 255, 255, 0.894);
+    color: #364eda;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border: 1.5px solid #364eda;
+    outline: none;
+    box-shadow: none;
+    margin: 8px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    font-weight: 400;
+}
+a{
+    color: rgb(0, 5, 81);
+    font-weight: 700;
+    transition: 0.5s;
+}
+li:hover{
+    text-decoration: underline !important;
+    cursor: pointer !important;
+}
+#signUpBtn{
+    padding: 0.8rem;
+    max-width: 100px;
+    background: #677eff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin: 8px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    font-weight: 400;
+}
+#signInBtn:hover, #signUpBtn:hover{
+    background: #364eda;
+    color: white;
+    box-shadow: 3px 3px 20px 10px rgba(53, 3, 172, 0.1);
+}
+
+
+.active{
+    height: 100%;
+    background-color: rgb(218, 189, 0);
+    text-decoration: underline;
+}

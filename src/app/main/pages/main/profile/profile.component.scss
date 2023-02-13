@@ -1,3 +1,6 @@
+form{
+    width: 25%;
+}
 form h2 {
     font-size: 18px;
     font-weight: 600;
@@ -28,11 +31,16 @@ form input {
     background-color: white;
     box-shadow: 5px 5px 20px 10px rgba(34, 0, 0, 0.1);
   }
-  
+  .delete{
+    background: red;
+}
+  .update{
+    background: #677eff;
+  }
 form button {
     padding: 0.8rem;
     max-width: 100px;
-    background: #677eff;
+    
     color: #fff;
     cursor: pointer;
     font-size: 14px;
@@ -48,30 +56,17 @@ form button {
     font-weight: 300;
     border-radius: 5px;
   }
-  form button:hover{
+  .update:hover{
     background: #364eda;
     box-shadow: 3px 3px 20px 10px rgba(53, 3, 172, 0.1);
   }
-  
-form .signup {
-    position: relative;
-    margin-top: 20px;
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: #555;
-    text-transform: uppercase;
-    font-weight: 300;
+  .delete:hover{
+    background: #f41212;
+    box-shadow: 3px 3px 20px 10px rgba(172, 3, 3, 0.1);
   }
   
-form .signup a {
-    font-weight: 600;
-    text-decoration: none;
-    color: #677eff;
-  }
-  form .signup a:hover {
-    cursor: pointer;
-    color: #243fd5;
-  }
+
+
   .fail{
     color: rgb(156, 49, 49);
   }
