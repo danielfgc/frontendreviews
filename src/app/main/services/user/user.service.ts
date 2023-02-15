@@ -13,8 +13,14 @@ export class UserService {
   updateUser(id:number, username:string,email: string, pass:string){
     const headers = new HttpHeaders().set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*')
-    .set("Authorization", this.getToken());
+    .set("Authorization", "authToken "+this.getToken());
     let body = {username: username, email:email, password: pass};
     return this.http.put(`http://localhost:8082/api/users/${id}`,body, {headers});
+  }
+  deleteUser(id:number){
+    const headers = new HttpHeaders().set('content-type', 'application/json')
+    .set('Access-Control-Allow-Origin', '*')
+    .set("Authorization", "authToken "+this.getToken());
+    return this.http.delete(`http://localhost:8082/api/users/${id}`, {headers});
   }
 }

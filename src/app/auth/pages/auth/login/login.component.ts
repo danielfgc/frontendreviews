@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit{
   correo:string = "";
   pass: string = "";
   respuesta:string="";
-  constructor(private authService: AuthService, private router:Router, private route:ActivatedRoute){}
+  constructor(private sessionService:SessionStorageService,private authService: AuthService, private router:Router, private route:ActivatedRoute){}
   ngOnInit(): void {
     if(this.route.snapshot.fragment==="register"){
       this.toggleForm()
@@ -24,11 +25,8 @@ export class LoginComponent implements OnInit{
   login(){
     this.authService.login(this.correo, this.pass).subscribe((response:any)=> {
       this.respuesta="";
-      if(response.error==null){
+        this.sessionService.setInfo(response);
         this.router.navigate(["/home"]);
-        sessionStorage.setItem("user", JSON.stringify(response.user));
-        sessionStorage.setItem("token", response.token);
-      }
     },(error)=>{
       this.respuesta='Email or password are incorrect';
       console.log(error);

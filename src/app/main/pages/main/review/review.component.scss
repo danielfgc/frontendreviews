@@ -1,0 +1,75 @@
+form{
+    width: 25%;
+}
+form h2 {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+form input, textarea,select {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    background: #f5f5f5;
+    color: #333;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin: 8px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    border-radius: 5px;
+  }
+  form input:focus,select:focus, textarea:focus{
+    background-color: white;
+    box-shadow: 5px 5px 20px 10px rgba(34, 0, 0, 0.1);
+  }
+  .delete{
+    background: red;
+}
+  .update{
+    background: #677eff;
+  }
+form button {
+    padding: 0.8rem;
+    max-width: 120px;
+    
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin: 8px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    border-radius: 5px;
+  }
+  .update:hover{
+    background: #364eda;
+    box-shadow: 3px 3px 20px 10px rgba(53, 3, 172, 0.1);
+  }
+  .delete:hover{
+    background: #f41212;
+    box-shadow: 3px 3px 20px 10px rgba(172, 3, 3, 0.1);
+  }
+  
+
+
+  .fail{
+    color: rgb(156, 49, 49);
+  }
+  .success{
+    color: green;
+  }

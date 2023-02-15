@@ -1,11 +1,19 @@
-<div class="card">
-    <div class="card-header">
-      Quote
-    </div>
-    <div class="card-body">
-      <blockquote class="blockquote mb-0">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-      </blockquote>
-    </div>
+<form class="container mt-5">
+  <h2>Add a review</h2>
+  <input type="text" name="title" id="title" [(ngModel)]="review.title" placeholder="Title" required />
+  <textarea name="body" id="body" [(ngModel)]="review.body" placeholder="Body" required></textarea>
+  <input type="number" name="title" id="title" [(ngModel)]="review.valoration" placeholder="Valoration" min="0" max="5" step="0.1" required />
+  <label for="category">Select a category</label>
+  <select name="category" id="category" [(ngModel)]="category">
+    <option value="1" selected>Libro</option>
+    <option value="2">Comic</option>
+    <option value="3">Película</option>
+    <option value="4">Serie</option>
+  </select>
+  <p [ngClass]="respuesta === 'Something went wrong' ? 'fail' : 'success'">{{respuesta}}</p>
+  <div class="d-flex justify-content-end">
+    <button class="update" (click)="addReview()">Add Review</button>
+
   </div>
+
+</form>

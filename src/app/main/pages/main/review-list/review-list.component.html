@@ -1,3 +1,23 @@
+<div class="button">
+    <button class="btn btn-primary " routerLink="../review" *ngIf="logged">Add Review</button>
+</div>
 <div class="container mt-4">
-    <app-review></app-review>
+    <p style="text-align: center;" *ngIf="reviews.length == 0">Oops,seems there are no reviews yet, be the first in
+        posting one!</p>
+
+    <div class="card mb-3" *ngFor="let review of reviews">
+        <div class="card-header">
+            {{review.title}}
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <h6>{{review.category?.category}}</h6>
+                <p>{{review.body}}</p>
+                <p><b>Valoration: </b>{{review.valoration}}</p>
+                <footer class="blockquote-footer"><cite
+                        title="Source Title">{{review.user?.username}}</cite>
+                </footer>
+            </blockquote>
+        </div>
+    <div>
 </div>

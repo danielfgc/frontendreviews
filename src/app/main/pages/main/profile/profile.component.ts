@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/main/services/user/user.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from 'src/app/main/services/user/user.service';
 })
 export class ProfileComponent implements OnInit{
   
-  constructor(private userService:UserService){}
+  constructor(private userService:UserService, private router: Router){}
   
   username: string = "";
   correo: string = "";
@@ -32,8 +33,23 @@ export class ProfileComponent implements OnInit{
     const usertxt:any = sessionStorage.getItem("user");
     user = JSON.parse(usertxt);
     this.userService.updateUser(user.id,this.username, this.correo, this.pass).subscribe(
-      res=> console.log("success: "+res),
+      res=> this.respuesta="Profile updated",
       error=> console.log("Error:",error)
     )
+  }
+  onDelete(){
+  
+    if(confirm("You are up to delete your profile, do you want to proceed?")){
+    let user:{id:number, username:string, email:string };
+    const usertxt:any = sessionStorage.getItem("user");
+    user = JSON.parse(usertxt);
+    this.userService.deleteUser(user.id).subscribe(res=>console.log(res),
+    error=>{
+      alert(error.error.text);
+      sessionStorage.clear();
+      this.router.navigate(["home"]);
+    }
+    )
+  }
   }
 }

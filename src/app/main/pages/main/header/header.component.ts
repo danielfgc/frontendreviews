@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionStorageService } from 'src/app/services/session-storage.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
-  logged:boolean = sessionStorage.getItem("token")!= null;
-  constructor(private router: Router){}
+export class HeaderComponent implements OnInit{
+  logged:boolean = true;
+  
+  constructor(private router: Router, private sessionService:SessionStorageService){}
+  ngOnInit(): void {
+    this.sessionService.data.subscribe(
+      res=> this.logged= res != null
+    )
+  }
   signIn(){
     this.router.navigate(["login"],{fragment:"login"});
   }
@@ -16,7 +23,7 @@ export class HeaderComponent {
     this.router.navigate(["login"], {fragment:"register"});
   }
   signOut(){
-    sessionStorage.clear();
+    this.sessionService.clearAllLocalStorage();
     // sessionStorage.removeItem("token");
     // sessionStorage.removeItem("user");
     this.router.navigate(["login"]);
