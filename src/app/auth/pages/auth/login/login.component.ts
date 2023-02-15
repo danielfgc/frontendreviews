@@ -23,12 +23,11 @@ export class LoginComponent implements OnInit{
   }
   login(){
     this.authService.login(this.correo, this.pass).subscribe((response:any)=> {
-      console.log(response)
       this.respuesta="";
       if(response.error==null){
         this.router.navigate(["/home"]);
-        sessionStorage.setItem("user", JSON.stringify(response.data.user));
-        sessionStorage.setItem("token", response.data.token);
+        sessionStorage.setItem("user", JSON.stringify(response.user));
+        sessionStorage.setItem("token", response.token);
       }
     },(error)=>{
       this.respuesta='Email or password are incorrect';
