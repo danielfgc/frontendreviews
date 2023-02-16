@@ -6,18 +6,21 @@ import { ProfileComponent } from './main/pages/main/profile/profile.component';
 import { ReviewListComponent } from './main/pages/main/review-list/review-list.component';
 import { ReviewComponent } from './main/pages/main/review/review.component';
 import { AuthGuard } from './main/services/guards/auth.guard';
+import { NotFoundComponent } from './errorpages/not-found/not-found.component';
+import { CanDeactivateGuard } from './main/services/guards/canDeactivateGuard/can-deactivate.guard';
 
 const routes: Routes = [
   {
     path: "home", component: MainComponent, children: [
       { path: "reviews", component: ReviewListComponent },
-      { path: "profile", component: ProfileComponent, canActivate:[AuthGuard] },
-      { path: "review", component: ReviewComponent, canActivate:[AuthGuard] },
+      { path: "profile", component: ProfileComponent, canActivate:[AuthGuard], canDeactivate:[CanDeactivateGuard] },
+      { path: "review", component: ReviewComponent, canActivate:[AuthGuard], canDeactivate:[CanDeactivateGuard] },
     ]
   },
-  { path: "", redirectTo: "home", pathMatch: "full" },
-
-  { path: 'login', component: AuthComponent }
+  { path: "", redirectTo: "home/reviews", pathMatch: "full" },
+  { path: 'login', component: AuthComponent },
+  {path:"not-found", component:NotFoundComponent},
+  { path: "**", redirectTo: "not-found" },
 
 ];
 
@@ -26,3 +29,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

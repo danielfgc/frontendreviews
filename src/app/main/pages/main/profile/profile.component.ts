@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import CanComponentDeactivate from 'src/app/main/services/guards/canDeactivateGuard/CanDeactivateComponent';
 import { UserService } from 'src/app/main/services/user/user.service';
 
 @Component({
@@ -7,10 +9,10 @@ import { UserService } from 'src/app/main/services/user/user.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit, CanComponentDeactivate{
   
   constructor(private userService:UserService, private router: Router){}
-  
+  changesSaved=false;
   username: string = "";
   correo: string = "";
   pass: string = "";
@@ -33,7 +35,10 @@ export class ProfileComponent implements OnInit{
     const usertxt:any = sessionStorage.getItem("user");
     user = JSON.parse(usertxt);
     this.userService.updateUser(user.id,this.username, this.correo, this.pass).subscribe(
-      res=> this.respuesta="Profile updated",
+      
+      (res)=>{ this.respuesta="Profile updated"
+      this.changesSaved = true;
+    },
       error=> console.log("Error:",error)
     )
   }
@@ -51,5 +56,11 @@ export class ProfileComponent implements OnInit{
     }
     )
   }
+  }
+  canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {
+    if(!this.changesSaved){
+      return confirm("Do you want to discard changes?");
+    }
+    return true;
   }
 }
