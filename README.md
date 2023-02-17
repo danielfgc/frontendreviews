@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Documuentación
+En el archivo "index.html" se encuentra la estructura básica de la página web, que incluye el encabezado, el cuerpo y el pie de página.
+
+En la carpeta "css" se encuentra el archivo "styles.css", que contiene los estilos de la página web.
+
+En la carpeta "js" se encuentra el archivo "app.js", que contiene el código JavaScript para la funcionalidad de la aplicación. Este archivo incluye funciones para agregar y eliminar reseñas, y para validar los campos de entrada del formulario.
+
+En la carpeta "img" se encuentran algunas imágenes utilizadas en la página web.
+
+En la raíz del repositorio se encuentra el archivo "README.md", que proporciona una breve descripción del proyecto y algunas instrucciones para ejecutar la aplicación.
+
+En resumen, el repositorio "frontendreviews" contiene una aplicación web básica que permite a los usuarios escribir reseñas sobre productos. El código incluido en el repositorio es una buena introducción a las tecnologías web fundamentales como HTML, CSS y JavaScript. Si deseas obtener más información sobre cómo funciona la aplicación, te recomiendo revisar el archivo "app.js", que contiene el código principal de la funcionalidad.
